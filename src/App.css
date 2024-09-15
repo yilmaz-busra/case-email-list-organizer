@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.app-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.available-recipients,
+.selected-recipients {
+  flex: 1;
+  max-width: 400px;
+}
+
+h2 {
+  color: #343a40;
+}
+
+h3 {
+  color: #495057;
+}
+
+div {
+  margin-bottom: 20px;
+}

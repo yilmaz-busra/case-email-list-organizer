@@ -1,4 +1,3 @@
-/* components/SelectedRecipients.css */
 .selected-recipients {
   background-color: white;
   border-radius: 8px;
@@ -8,7 +7,7 @@
 
 .selected-recipients h2 {
   margin-top: 0;
-  color: #333;
+  color: #57aaec;
 }
 
 .recipient-group {
@@ -16,16 +15,14 @@
 }
 
 .group-header {
-  background-color: #f8f9fa;
   padding: 10px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   font-weight: bold;
-}
-
-.arrow {
-  margin-right: 10px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  color: #495057;
 }
 
 ul {
@@ -41,17 +38,4 @@ li {
 
 li:hover {
   background-color: #f0f0f0;
-}
-
-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #c82333;
 }
