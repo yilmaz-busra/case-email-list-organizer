@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { groupBy } from "lodash";
 import "./AvailableRecipients.css";
 import { CiSearch } from "react-icons/ci";
-
+import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
 interface Recipient {
   email: string;
   domain: string;
@@ -83,7 +83,12 @@ const AvailableRecipients: React.FC<AvailableRecipientsProps> = ({
         .map(([domain, domainRecipients]) => (
           <div key={domain}>
             <h3 onClick={() => toggleDomain(domain)}>
-              {expandedDomain === domain ? "▼" : "▶"} {domain}
+              {expandedDomain === domain ? (
+                <IoMdArrowDropdown />
+              ) : (
+                <IoMdArrowDropright />
+              )}{" "}
+              {domain}
             </h3>
             {expandedDomain === domain && (
               <ul>

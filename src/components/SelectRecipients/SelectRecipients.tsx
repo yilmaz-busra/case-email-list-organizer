@@ -1,6 +1,6 @@
 import React from "react";
 import "./SelectRecipients.css";
-
+import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
 interface Recipient {
   email: string;
   domain: string;
@@ -34,7 +34,7 @@ const SelectRecipients: React.FC<SelectedRecipientsProps> = ({
           className="group-header"
           onClick={() => removeAllRecipients("company")}
         >
-          <span className="arrow">▶</span>
+          <IoMdArrowDropright />
           Company Recipients
         </div>
         <ul>
@@ -50,7 +50,7 @@ const SelectRecipients: React.FC<SelectedRecipientsProps> = ({
       </div>
       <div className="recipient-group">
         <div className="group-header">
-          <span className="arrow">▶</span>
+          <IoMdArrowDropright />
           Email Recipients
         </div>
         <ul>
