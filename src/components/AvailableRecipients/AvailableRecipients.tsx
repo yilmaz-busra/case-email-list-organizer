@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./AvailableRecipients.css";
 import { groupBy } from "lodash";
+import "./AvailableRecipients.css";
+import { CiSearch } from "react-icons/ci";
 
 interface Recipient {
   email: string;
@@ -25,19 +26,13 @@ const AvailableRecipients: React.FC<AvailableRecipientsProps> = ({
     { email: "furkan@gmail.com", domain: "gmail.com" },
     { email: "batin@gmail.com", domain: "gmail.com" },
   ]);
-
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [expandedDomain, setExpandedDomain] = useState<string | null>(null);
 
   const filteredRecipients = recipients.filter((recipient) =>
-    recipient.email.includes(searchTerm)
+    recipient.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const groupedRecipients = groupBy(filteredRecipients, "domain");
-
-  const handleDomainSelect = (domain: string) => {
-    const domainRecipients = recipients.filter((r) => r.domain === domain);
-    addRecipient(domainRecipients);
-  };
 
   const handleEmailInput = (email: string) => {
     if (isValidEmail(email)) {
@@ -51,30 +46,25 @@ const AvailableRecipients: React.FC<AvailableRecipientsProps> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-
-    const filteredSuggestions = recipients
-      .filter(
-        (r) =>
-          r.email.toLowerCase().includes(value.toLowerCase()) ||
-          r.domain.toLowerCase().includes(value.toLowerCase())
-      )
-      .map((r) => r.email);
-    setSuggestions(filteredSuggestions);
   };
 
-  const handleSuggestionClick = (email: string) => {
-    const recipient = recipients.find((r) => r.email === email);
-    if (recipient) {
-      addRecipient(recipient);
+  const toggleDomain = (domain: string) => {
+    if (expandedDomain === domain) {
+      setExpandedDomain(null);
+    } else {
+      setExpandedDomain(domain);
+      if (domain !== "gmail.com") {
+        const domainRecipients = recipients.filter((r) => r.domain === domain);
+        addRecipient(domainRecipients);
+      }
     }
-    setSearchTerm("");
-    setSuggestions([]);
   };
 
   return (
     <div className="available-recipients">
       <h2>Available Recipients</h2>
       <div className="search-container">
+        <CiSearch className="search-icon" />
         <input
           type="text"
           placeholder="Search"
@@ -84,34 +74,38 @@ const AvailableRecipients: React.FC<AvailableRecipientsProps> = ({
             if (e.key === "Enter") {
               handleEmailInput(searchTerm);
               setSearchTerm("");
-              setSuggestions([]);
             }
           }}
         />
-        {suggestions.length > 0 && (
-          <ul className="suggestions">
-            {suggestions.map((suggestion, index) => (
-              <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                {suggestion}
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
-      {Object.entries(groupedRecipients).map(([domain, domainRecipients]) => (
-        <div key={domain}>
-          {domain !== "gmail.com" && (
-            <h3 onClick={() => handleDomainSelect(domain)}>{domain}</h3>
-          )}
-          <ul>
-            {domainRecipients.map((recipient, index) => (
-              <li key={index} onClick={() => addRecipient(recipient)}>
-                {recipient.email}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {Object.entries(groupedRecipients)
+        .filter(([domain]) => domain !== "gmail.com")
+        .map(([domain, domainRecipients]) => (
+          <div key={domain}>
+            <h3 onClick={() => toggleDomain(domain)}>
+              {expandedDomain === domain ? "▼" : "▶"} {domain}
+            </h3>
+            {expandedDomain === domain && (
+              <ul>
+                {domainRecipients.map((recipient, index) => (
+                  <li key={index} onClick={() => addRecipient(recipient)}>
+                    {recipient.email}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+
+      <div>
+        <ul>
+          {groupedRecipients["gmail.com"]?.map((recipient, index) => (
+            <li key={index} onClick={() => addRecipient(recipient)}>
+              {recipient.email}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

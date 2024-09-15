@@ -7,17 +7,36 @@
 
 .available-recipients h2 {
   margin-top: 0;
-  color: #333;
+  color: #57aaec;
+}
+
+.available-recipients h3 {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.available-recipients h3 svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .search-container {
   margin-bottom: 20px;
   position: relative;
 }
-
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
 .search-container input {
-  width: 100%;
-  padding: 10px;
+  width: 50%;
+  padding: 10px 30px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
@@ -35,29 +54,5 @@ li {
 }
 
 li:hover {
-  background-color: #f0f0f0;
-}
-
-.suggestions {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-top: none;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.suggestions li {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.suggestions li:hover {
   background-color: #f0f0f0;
 }
