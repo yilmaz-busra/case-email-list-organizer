@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# Recipient Management Component App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React and TypeScript-based component that allows users to manage email recipients through features like autocomplete, email validation, domain-based grouping, and recipient selection. The functionality is designed to handle both individual email addresses and groups of emails that share the same company domain.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### View All Recipients:
 
-### `npm start`
+Displays a list of available recipients, either as individual emails or grouped by company domain.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Select Recipients:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users can select an individual email or an entire company domain, which adds all associated emails to the selected recipients' list.
 
-### `npm test`
+### Autocomplete Search:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users can enter the name of a company into an autocomplete search and select a recipient from the suggested results.
 
-### `npm run build`
+### Add Custom Email:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Users can manually enter and add any valid email address to the list of available recipients.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How It Works
 
-### `npm run eject`
+### Search & Autocomplete:
+The user can start typing a company name or an email address. The component filters the list of available recipients based on the input, displaying suggestions.
+### Adding Recipients:
+Users can either select from the filtered recipients or enter a new email address manually, which is validated before being added.
+### Grouping Recipients:
+Selected recipients are grouped by domain, with the option to expand and view individual members of each group.
+### Removing Recipients:
+ Users can remove a single recipient or all recipients that share the same domain with a single action.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies
+###React: UI library for building user interfaces.
+###TypeScript: Strictly typed programming language to ensure better code quality.
+###Lodash: Utility library for grouping and filtering recipients by domain.
+###Lodash: CSS: Used for styling the component layout.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
