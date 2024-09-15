@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "./App.css";
 import AvailableRecipients from "./components/AvailableRecipients/AvailableRecipients";
+import SelectRecipients from "./components/SelectRecipients/SelectRecipients";
 
 interface Recipient {
   email: string;
@@ -26,9 +27,28 @@ const App: React.FC = () => {
     }
   };
 
+  const removeRecipient = (email: string) => {
+    setSelectedRecipients((prev) =>
+      prev.filter((recipient) => recipient.email !== email)
+    );
+  };
+
+  const removeAllRecipients = (type: string) => {
+    if (type === "company") {
+      setSelectedRecipients((prev) =>
+        prev.filter((recipient) => recipient.domain === "gmail.com")
+      );
+    }
+  };
+
   return (
     <div className="app-container">
       <AvailableRecipients addRecipient={addRecipient} />
+      <SelectRecipients
+        selectedRecipients={selectedRecipients}
+        removeRecipient={removeRecipient}
+        removeAllRecipients={removeAllRecipients}
+      />
     </div>
   );
 };

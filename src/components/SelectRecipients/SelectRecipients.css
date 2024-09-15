@@ -1,0 +1,57 @@
+/* components/SelectedRecipients.css */
+.selected-recipients {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.selected-recipients h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.recipient-group {
+  margin-bottom: 10px;
+}
+
+.group-header {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.arrow {
+  margin-right: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c82333;
+}
