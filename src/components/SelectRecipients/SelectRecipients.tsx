@@ -1,6 +1,6 @@
 import React from "react";
 import "./SelectRecipients.css";
-import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
+import { IoMdArrowDropright } from "react-icons/io";
 interface Recipient {
   email: string;
   domain: string;
